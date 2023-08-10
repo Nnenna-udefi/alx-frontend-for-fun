@@ -38,7 +38,7 @@ if __name__ == '__main__':
                                                          heading_text, level)
 
             # check for unordered list
-            match_list = re.match(r"^\s*- (.*)$", line)
+            match_unorderedlist = re.match(r"^\s*- (.*)$", line)
             if match_unorderedlist:
                 if not in_unorderedlist:
                     """
@@ -66,7 +66,7 @@ if __name__ == '__main__':
                 html_content += "    <li>{}</li>\n".format(ordered_listitem)
 
             else:
-                if in_list:
+                if in_orderedlist:
                     html_content += "</ul>\n"
                     in_unorderedlist = False
                 if in_orderedlist:
