@@ -26,7 +26,7 @@ if __name__ == '__main__':
     with open(markdown_file, encoding="utf-8") as file:
         html_content = ""
         # Initialize the in_list flag
-        in_list = False
+        in_unorderedlist = False
         in_orderedlist = False
         for line in file:
             # Check for Markdown headings
@@ -39,16 +39,17 @@ if __name__ == '__main__':
 
             # check for unordered list
             match_list = re.match(r"^\s*- (.*)$", line)
-            if match_list:
-                if not in_list:
+            if match_unorderedlist:
+                if not in_unorderedlist:
                     """
-                        intheList is a flag to track whether a list is being
-                        procesed and adds <ul> opening and closing tags
+                        in_unorderedlist is a flag to track whether a list
+                        is being procesed and adds <ul>
+                        opening and closing tags
                     """
                     html_content += '<ul>\n'
-                    in_list = True
+                    in_unorderedlist = True
                     in_orderedlist = False
-                list_item = match_list.group(1)
+                list_item = match_unorderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(list_item)
 
             # check for ordered list
@@ -57,21 +58,21 @@ if __name__ == '__main__':
                 if not in_orderedlist:
                     html_content += '<ol>\n'
                     in_orderedlist = True
-                    in_list = False
+                    in_unorderedlist = False
                 ordered_listitem = match_orderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(ordered_listitem)
 
             else:
                 if in_list:
                     html_content += "</ul>\n"
-                    in_list = False
+                    in_unorderedlist = False
                 if in_orderedlist:
                     html_content += "<ol>\n"
                     in_ordered_list = False
 
 
         # Close any open list at the end
-        if in_list:
+        if in_unorderedlist:
             html_content += "</ul>\n"
         if in_orderedlist:
             html_content += "</ol>\n"
