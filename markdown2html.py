@@ -55,6 +55,9 @@ if __name__ == '__main__':
             # check for ordered list
             match_orderedlist = re.match(r"^\s*\* (.*)$", line)
             if match_orderedlist:
+                if in_unorderedlist:
+                    html_content += "</ul>\n"
+                    in_unorderedlist = False
                 if not in_orderedlist:
                     html_content += '<ol>\n'
                     in_orderedlist = True
