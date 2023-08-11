@@ -49,15 +49,19 @@ Parsing Ordered listing syntax for generating HTML:
 Syntax: (you can assume it will be strictly this syntax)
 
 Markdown:
-
+```
 * Hello
 * Bye
+```
+  
 HTML generated:
 
+```
 <ol>
     <li>Hello</li>
     <li>Bye</li>
 </ol>
+```
 
 ## Paragraph text
 Parsing paragraph syntax for generating HTML:
@@ -72,6 +76,7 @@ I'm a text
 with 2 lines
 HTML generated:
 
+```
 <p>
     Hello
 </p>
@@ -80,16 +85,17 @@ HTML generated:
         <br />
     with 2 lines
 </p>
+```
 
 ## Bold and emphasis text
 Parsing bold syntax for generating HTML:
 
 Syntax: (you can assume it will be strictly this syntax)
 
-| Markdown	| HTML generated |
-| --------- | -------------- |
-| **Hello** |	<b>Hello</b>   |
-| __Hello__ |	<em>Hello</em> |
+| Markdown	| HTML generated           |
+| --------- | ------------------------ |
+| **Hello** |	``` <b>Hello</b> ```   |
+| __Hello__ |	``` <em>Hello</em> ``` |
 
 ## Hashlib md5
 Parsing bold syntax for generating HTML:
