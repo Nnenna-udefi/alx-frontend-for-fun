@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
             # check for paragraph
             if not match or match_unorderedlist or match_orderedlist:
-                if not in_paragraph length > 1:
+                if not in_paragraph and length > 1:
                     html_content += "<p>\n"
                     in_paragraph = True
                 elif length > 1:
@@ -80,6 +80,9 @@ if __name__ == '__main__':
                 # paragraph_text = line.strip()
                 # html_content += "    {}\n".format(paragraph_text)
 
+
+            if length > 1:
+                html_content += line
         # Close any open list at the end
         if in_unorderedlist:
             html_content += "</ul>\n"
@@ -92,3 +95,5 @@ if __name__ == '__main__':
     # Write the HTML output to a file
     with open(output_file, "w", encoding="utf-8") as html:
         html.write(html_content)
+
+    exit(0)
