@@ -3,6 +3,7 @@
 import sys
 import os
 import re
+import hashlib
 
 
 if __name__ == '__main__':
@@ -38,7 +39,19 @@ if __name__ == '__main__':
             line = line.replace('__', '<em>', 1)
             line = line.replace('__', '</em>', 1)
 
-            
+            # Converting markdown to md5
+            # Replace [[...]] with MD5 hash of content (lowercase)
+            md5 = re.findall(r'\[\[.+?\]\]', line)
+            md5_content = re.findall(r'\[\[(.+?)\]\]', line)
+            if md5:
+                line = line.replace(md5[0], hashlib.md5(md5_content[0].encode()).hexdigest())
+
+            letter_c = re.findall(r'\(\(.+?\)\)', line)
+            remove_letterc = re.findall(r'\(\((.+?)\)\)', line)
+            if letter_c:
+                remove_letterc = ''.join(c for c in remove_letterc[0] if c not in 'Cc')
+                line = line.replace(letter_c[0], remove_letterc)
+
             length = len(line)
             # Check for Markdown headings
             match = re.match(r"^(#+) (.*)$", line)
@@ -87,12 +100,10 @@ if __name__ == '__main__':
                 elif in_paragraph:
                     html_content += "</p>\n"
                     in_paragraph = False
-                # paragraph_text = line.strip()
-                # html_content += "    {}\n".format(paragraph_text)
+                paragraph_text = line.strip()
+                html_content += "    {}\n".format(paragraph_text)
 
 
-            if length > 1:
-                html_content += html_content
         # Close any open list at the end
         if in_unorderedlist:
             html_content += "</ul>\n"
