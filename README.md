@@ -20,26 +20,28 @@ Parsing Headings Markdown syntax for generating HTML:
 
 Syntax: (you can assume it will be strictly this syntax)
 
-Markdown	HTML generated
-# Heading level 1	<h1>Heading level 1</h1>
-## Heading level 2	<h2>Heading level 1</h2>
-### Heading level 3	<h3>Heading level 1</h3>
-#### Heading level 4	<h4>Heading level 1</h4>
-##### Heading level 5	<h5>Heading level 1</h5>
-###### Heading level 6	<h6>Heading level 1</h6>
+| Markdown	                   | HTML generated
+| ---------------------------- | ------------------------------ |
+| ```# Heading level 1```      | ```<h1>Heading level 1</h1>``` |
+| ```## Heading level 2```     | ```<h2>Heading level 1</h2>``` |
+| ```### Heading level 3```    | ```<h3>Heading level 1</h3>``` |
+| ```#### Heading level 4```   | ```<h4>Heading level 1</h4>``` |
+| ```##### Heading level 5```  | ```<h5>Heading level 1</h5>``` |
+| ```###### Heading level 6``` | ```<h6>Heading level 1</h6>``` |
 
 ## Unordered list
 Parsing Unordered listing syntax for generating HTML:
 
 Syntax: (you can assume it will be strictly this syntax)
 
-```
 Markdown:
-
+```
 - Hello
 - Bye
-``` 
+```
+
 HTML generated:
+
 ```
 <ul>
     <li>Hello</li>
@@ -96,8 +98,8 @@ Parsing bold syntax for generating HTML:
 
 Syntax: (you can assume it will be strictly this syntax)
 
-| Markdown	| HTML generated           |
-| --------- | ------------------------ |
+| Markdown	        | HTML generated           |
+| ----------------- | ------------------------ |
 | ``` **Hello** ``` |	``` <b>Hello</b> ```   |
 | ``` __Hello__ ``` |	``` <em>Hello</em> ``` |
 
