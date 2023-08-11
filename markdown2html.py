@@ -30,6 +30,7 @@ if __name__ == '__main__':
         in_orderedlist = False
         in_paragraph = False
         for line in file:
+            length = len(line)
             # Check for Markdown headings
             match = re.match(r"^(#+) (.*)$", line)
             if match:
@@ -69,10 +70,10 @@ if __name__ == '__main__':
 
             # check for paragraph
             if not match or match_unorderedlist or match_orderedlist:
-                if not in_paragraph len(line) > 1:
+                if not in_paragraph length > 1:
                     html_content += "<p>\n"
                     in_paragraph = True
-                elif len(line) > 1:
+                elif length > 1:
                     html_content += "<br/>\n"
                 elif in_paragraph:
                     html_content += "</p>\n"
