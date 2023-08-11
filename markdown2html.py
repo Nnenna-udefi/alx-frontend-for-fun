@@ -28,6 +28,7 @@ if __name__ == '__main__':
         # Initialize the in_list flag
         in_unorderedlist = False
         in_orderedlist = False
+        in_paragraph = False
         for line in file:
             # Check for Markdown headings
             match = re.match(r"^(#+) (.*)$", line)
@@ -65,13 +66,23 @@ if __name__ == '__main__':
                 ordered_listitem = match_orderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(ordered_listitem)
 
-            else:
-                if in_orderedlist:
-                    html_content += "</ul>\n"
-                    in_unorderedlist = False
+            # check for paragraph
+            if line.strip():
                 if in_orderedlist:
                     html_content += "<ol>\n"
-                    in_ordered_list = False
+                    in_orderedlist = False
+                if not in_paragraph:
+                    html_content += "<p>\n"
+                    in_paragraph = True
+                    in_unoderedlist = False
+                    in_orderedlist = False
+                paragraph_text = line.strip()
+                html_content += "    {}\n".format(paragraph_text)
+
+            else:
+                if in_paragraph:
+                    html_content += "</p>\n"
+                    in_paragraph = False
 
 
         # Close any open list at the end
@@ -79,6 +90,9 @@ if __name__ == '__main__':
             html_content += "</ul>\n"
         if in_orderedlist:
             html_content += "</ol>\n"
+        # Close if any paragraph is open
+        if in_paragraph:
+            html_content += "</p\n"
 
     # Write the HTML output to a file
     with open(output_file, "w", encoding="utf-8") as html:
