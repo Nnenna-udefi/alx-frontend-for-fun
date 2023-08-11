@@ -33,15 +33,19 @@ Parsing Unordered listing syntax for generating HTML:
 
 Syntax: (you can assume it will be strictly this syntax)
 
+```
 Markdown:
 
 - Hello
 - Bye
+``` 
 HTML generated:
+```
 <ul>
     <li>Hello</li>
     <li>Bye</li>
 </ul>
+```
 
 ## Ordered list
 Parsing Ordered listing syntax for generating HTML:
@@ -94,8 +98,8 @@ Syntax: (you can assume it will be strictly this syntax)
 
 | Markdown	| HTML generated           |
 | --------- | ------------------------ |
-| **Hello** |	``` <b>Hello</b> ```   |
-| __Hello__ |	``` <em>Hello</em> ``` |
+| ``` **Hello** ``` |	``` <b>Hello</b> ```   |
+| ``` __Hello__ ``` |	``` <em>Hello</em> ``` |
 
 ## Hashlib md5
 Parsing bold syntax for generating HTML:
