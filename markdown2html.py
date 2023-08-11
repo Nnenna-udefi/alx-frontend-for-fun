@@ -47,46 +47,37 @@ if __name__ == '__main__':
                         is being procesed and adds <ul>
                         opening and closing tags
                     """
-                    if in_orderedlist:
-                        html_content += "</ol>\n"
-                        in_orderedlist = False
                     html_content += '<ul>\n'
                     in_unorderedlist = True
                 list_item = match_unorderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(list_item)
+            if in_unorderedlist and not match_unorderedlist:
+                html_content += "</ul>\n"
+                in_unorderedlist = False
 
             # check for ordered list
             match_orderedlist = re.match(r"^\s*\* (.*)$", line)
             if match_orderedlist:
-                if in_unorderedlist:
-                    html_content += "</ul>\n"
-                    in_unorderedlist = False
                 if not in_orderedlist:
                     html_content += '<ol>\n'
                     in_orderedlist = True
-                    in_unorderedlist = False
                 ordered_listitem = match_orderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(ordered_listitem)
+            if in_orderedlist and not match_orderedlist:
+                html_content += "</ol>\n"
+                in_orderedlist = False
 
             # check for paragraph
-            if line.strip():
-                if in_unorderedlist:
-                    html_content += "</ul>\n"
-                    in_unorderedlist = False
-                if in_orderedlist:
-                    html_content += "</ol>\n"
-                    in_orderedlist = False
-                if not in_paragraph:
+            if not match or match_unorderedlist or match_orderedlist:
+                if not in_paragraph len(line) > 1:
                     html_content += "<p>\n"
                     in_paragraph = True
-                paragraph_text = line.strip()
-                html_content += "    {}\n".format(paragraph_text)
-
-            else:
-                if in_paragraph:
+                elif len(line) > 1:
+                    html_content += "<br/>\n"
+                elif in_paragraph:
                     html_content += "</p>\n"
-                    in_paragraph = False
-
+                # paragraph_text = line.strip()
+                # html_content += "    {}\n".format(paragraph_text)
 
         # Close any open list at the end
         if in_unorderedlist:
