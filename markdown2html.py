@@ -47,9 +47,11 @@ if __name__ == '__main__':
                         is being procesed and adds <ul>
                         opening and closing tags
                     """
+                    if in_orderedlist:
+                        html_content += "</ol>\n"
+                        in_orderedlist = False
                     html_content += '<ul>\n'
                     in_unorderedlist = True
-                    in_orderedlist = False
                 list_item = match_unorderedlist.group(1)
                 html_content += "    <li>{}</li>\n".format(list_item)
 
@@ -68,14 +70,15 @@ if __name__ == '__main__':
 
             # check for paragraph
             if line.strip():
+                if in_unorderedlist:
+                    html_content += "</ul>\n"
+                    in_unorderedlist = False
                 if in_orderedlist:
-                    html_content += "<ol>\n"
+                    html_content += "</ol>\n"
                     in_orderedlist = False
                 if not in_paragraph:
                     html_content += "<p>\n"
                     in_paragraph = True
-                    in_unoderedlist = False
-                    in_orderedlist = False
                 paragraph_text = line.strip()
                 html_content += "    {}\n".format(paragraph_text)
 
@@ -92,7 +95,7 @@ if __name__ == '__main__':
             html_content += "</ol>\n"
         # Close if any paragraph is open
         if in_paragraph:
-            html_content += "</p\n"
+            html_content += "</p>\n"
 
     # Write the HTML output to a file
     with open(output_file, "w", encoding="utf-8") as html:
