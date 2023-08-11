@@ -10,7 +10,7 @@ if __name__ == '__main__':
         sys.argv[1] = markdown file
         sys.argv[2] = output file
     """
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print('Usage: ./markdown2html.py README.md README.html',
               file=sys.stderr)
         exit(1)
@@ -25,11 +25,20 @@ if __name__ == '__main__':
     # Read the Markdown file and convert it to HTML
     with open(markdown_file, encoding="utf-8") as file:
         html_content = ""
-        # Initialize the in_list flag
+        
+        # Initialize the flags
         in_unorderedlist = False
         in_orderedlist = False
         in_paragraph = False
+        
         for line in file:
+            # check for the bold syntax
+            line = line.replace('**', '<b>', 1)
+            line = line.replace('**', '</b>', 1)
+            line = line.replace('__', '<em>', 1)
+            line = line.replace('__', '</em>', 1)
+
+            
             length = len(line)
             # Check for Markdown headings
             match = re.match(r"^(#+) (.*)$", line)
@@ -69,7 +78,7 @@ if __name__ == '__main__':
                 in_orderedlist = False
 
             # check for paragraph
-            if not match or match_unorderedlist or match_orderedlist:
+            if not (match or match_unorderedlist or match_orderedlist):
                 if not in_paragraph and length > 1:
                     html_content += "<p>\n"
                     in_paragraph = True
@@ -77,12 +86,13 @@ if __name__ == '__main__':
                     html_content += "<br/>\n"
                 elif in_paragraph:
                     html_content += "</p>\n"
+                    in_paragraph = False
                 # paragraph_text = line.strip()
                 # html_content += "    {}\n".format(paragraph_text)
 
 
             if length > 1:
-                html_content += line
+                html_content += html_content
         # Close any open list at the end
         if in_unorderedlist:
             html_content += "</ul>\n"
