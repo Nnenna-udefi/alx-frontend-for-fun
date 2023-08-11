@@ -1,10 +1,219 @@
-<h1>My title</h1>
-# My title
-<h2>My title2</h2>
-## My title2
-<h1>My title3</h1>
-# My title3
-<h4>My title4</h4>
-#### My title4
-<h3>My title5</h3>
-### My title5
+<h1>Markdown to HTML</h1>
+<h2>Description</h2>
+<p>
+    Markdown is awesome! All your README.md are made in Markdown, but do you know how GitHub are rendering them?
+</p>
+    
+<p>
+    It’s time to code a Markdown to HTML!
+<h2>Tasks</h2>
+<h3>0. Start a script</h3>
+<br/>
+    A script markdown2html.py that takes an argument 2 strings:
+</p>
+    
+<p>
+    First argument is the name of the Markdown file
+<br/>
+    Second argument is the output file name
+<br/>
+    Requirements:
+</p>
+    
+<p>
+    If the number of arguments is less than 2: print in STDERR Usage: ./markdown2html.py README.md README.html and exit 1
+<br/>
+    If the Markdown file doesn’t exist: print in STDER Missing <filename> and exit 1
+<br/>
+    Otherwise, print nothing and exit 0
+</p>
+    
+<h3>Headings</h3>
+<p>
+    Parsing Headings Markdown syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    | Markdown	                   | HTML generated
+<br/>
+    | ---------------------------- | ------------------------------ |
+<br/>
+    | ```# Heading level 1```      | ```<h1>Heading level 1</h1>``` |
+<br/>
+    | ```## Heading level 2```     | ```<h2>Heading level 1</h2>``` |
+<br/>
+    | ```### Heading level 3```    | ```<h3>Heading level 1</h3>``` |
+<br/>
+    | ```#### Heading level 4```   | ```<h4>Heading level 1</h4>``` |
+<br/>
+    | ```##### Heading level 5```  | ```<h5>Heading level 1</h5>``` |
+<br/>
+    | ```###### Heading level 6``` | ```<h6>Heading level 1</h6>``` |
+</p>
+    
+<h2>Unordered list</h2>
+<p>
+    Parsing Unordered listing syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    Markdown:
+<br/>
+    ```
+<ul>
+    <li>Hello</li>
+    <li>Bye</li>
+</ul>
+<br/>
+    ```
+</p>
+    
+<p>
+    HTML generated:
+</p>
+    
+<p>
+    ```
+<br/>
+    <ul>
+<br/>
+    <li>Hello</li>
+<br/>
+    <li>Bye</li>
+<br/>
+    </ul>
+<br/>
+    ```
+</p>
+    
+<h2>Ordered list</h2>
+<p>
+    Parsing Ordered listing syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    Markdown:
+<br/>
+    ```
+<ol>
+    <li>Hello</li>
+    <li>Bye</li>
+</ol>
+<br/>
+    ```
+<br/>
+    
+<br/>
+    HTML generated:
+</p>
+    
+<p>
+    ```
+<br/>
+    <ol>
+<br/>
+    <li>Hello</li>
+<br/>
+    <li>Bye</li>
+<br/>
+    </ol>
+<br/>
+    ```
+</p>
+    
+<h2>Paragraph text</h2>
+<p>
+    Parsing paragraph syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    Markdown:
+</p>
+    
+<p>
+    Hello
+</p>
+    
+<p>
+    I'm a text
+<br/>
+    with 2 lines
+<br/>
+    HTML generated:
+</p>
+    
+<p>
+    ```
+<br/>
+    <p>
+<br/>
+    Hello
+<br/>
+    </p>
+<br/>
+    <p>
+<br/>
+    I'm a text
+<br/>
+    <br />
+<br/>
+    with 2 lines
+<br/>
+    </p>
+<br/>
+    ```
+</p>
+    
+<h2>Bold and emphasis text</h2>
+<p>
+    Parsing bold syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    | Markdown	        | HTML generated           |
+<br/>
+    | ----------------- | ------------------------ |
+<br/>
+    | ``` <b>Hello</b> ``` |	``` <b>Hello</b> ```   |
+<br/>
+    | ``` <em>Hello</em> ``` |	``` <em>Hello</em> ``` |
+</p>
+    
+<h2>Hashlib md5</h2>
+<p>
+    Parsing bold syntax for generating HTML:
+</p>
+    
+<p>
+    Syntax: (you can assume it will be strictly this syntax)
+</p>
+    
+<p>
+    | Markdown	        | HTML generated	                 | description                                      |
+<br/>
+    | ----------------- | -------------------------------- | ------------------------------------------------ |
+<br/>
+    | 8b1a9953c4611296a827abf8c47804d7         | 8b1a9953c4611296a827abf8c47804d7 | convert in MD5 (lowercase) the content           |
+<br/>
+    | Hello hiago |	Hello hiago	                     | remove all c (case insensitive) from the content |
+</p>
