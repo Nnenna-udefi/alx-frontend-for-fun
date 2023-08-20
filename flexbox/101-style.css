@@ -8,37 +8,43 @@
     align-self: center;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
     color: white;
     font-family: sans-serif;
-    width: 50px;
 }
     
 .box1 {
     background-color: hsl(240, 64%, 72%);
     height: 50px;
+    flex-basis: 5%;
     font-size: 1rem;
 }
 .box2 {
-    background-color: green;
+    background-color: rgb(23, 129, 23);
     height: 70px;
-    font-size: 1.2rem;
+    flex-basis: 10%;
+    font-size: 2rem;
     
 }
 .box3 {
     background-color: rgb(71, 71, 15);
     height: 100px;
-    font-size: 1.8rem;
+    flex-basis: 20%;
+    font-size: 4rem;
 }
 .box4 {
-    background-color: red;
+    background-color: rgb(237, 38, 38);
     height: 70px;
-    font-size: 1.2rem;
+    flex-basis: 10%;
+    font-size: 2rem;
 
 }
 .box5 {
     background-color: rgb(103, 99, 99);
     height: 50px;
+    flex-basis: 5%;
     font-size: 1rem;
+}
+.box:hover {
+    opacity: 0.6;
 }
             
