@@ -41,6 +41,7 @@ body {
     transition: 0.3s; /* transition effect */
 }
 
+/* Styling for the switch when it's in the "on" state */
 .toggle-cb:checked + .toggle-label::after {
     left: calc(100% + 3.5px);
     transform: translateX(-100%);
@@ -65,6 +66,7 @@ body {
     opacity: 1;
 }
 
+/* Styling for the switch when it's in the "off" state */
 .toggle-cb:not(:checked) + .toggle-label .toggle-inner::after {
     content: 'No';
     left: 50%;
