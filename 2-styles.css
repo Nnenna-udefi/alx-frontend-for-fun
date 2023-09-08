@@ -1,0 +1,74 @@
+body {
+    background-color: rgb(217, 212, 212);
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.toggle {
+    display: inline-block;
+    position: relative;
+    padding: 2rem;
+}
+
+.toggle-cb {
+    display: none; /* Hide the actual checkbox */
+}
+
+.toggle-label {
+    display: block;
+    width: 70px;
+    height: 25px;
+    padding: .5rem 1.5rem;
+    background-color: #ccc;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgb(199, 189, 189);
+}
+
+/* The toggle switch (circle) */
+.toggle-label::after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-color: #fff; /* Color of the switch */
+    border-radius: 50%; /* Make it round to resemble a circle */
+    position: absolute;
+    border: 1px solid rgb(199, 189, 189);
+    top: -3.5px;
+    left: -3.5px; /* Start on the right side */
+    transition: 0.3s; /* transition effect */
+}
+
+.toggle-cb:checked + .toggle-label::after {
+    left: calc(100% + 3.5px);
+    transform: translateX(-100%);
+}
+
+.toggle-cb:checked + .toggle-label {
+    background-color: rgb(226, 82, 106);
+}
+
+.toggle-inner{
+    font-size: 1.5rem;
+    position: absolute;
+    text-align: center;
+    transition: 0.3s;
+}
+
+
+.toggle-cb:checked + .toggle-label .toggle-inner::after {
+    content: 'Yes';
+    color: #fff;
+    right: 50%;
+    opacity: 1;
+}
+
+.toggle-cb:not(:checked) + .toggle-label .toggle-inner::after {
+    content: 'No';
+    left: 50%;
+    opacity: 1;
+    color: #949191;
+    padding-left: 2.5rem;
+}
