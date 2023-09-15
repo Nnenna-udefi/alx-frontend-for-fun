@@ -9,16 +9,17 @@ $font: 20px;
 
 h1 {
     font-size: $font;
+
     @media screen and (max-width: $bigger-screen) {
-            font-size: $big-font;
-        @media screen and (max-width: $medium-screen) {
-              font-size: $medium-font; 
-        }
-        @media screen and (max-width: $small-screen) {
-            font-size: $small-font;
-            &.small {
-                color: #1D1D1D;
-            }
+        font-size: $big-font;
+    }
+    @media screen and (max-width: $medium-screen) {
+        font-size: $medium-font; 
+    }
+    @media screen and (max-width: $small-screen) {
+        font-size: $small-font;
+        &.small {
+            color: #1D1D1D;
         }
     }
 }
