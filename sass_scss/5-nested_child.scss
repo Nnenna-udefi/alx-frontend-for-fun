@@ -1,0 +1,8 @@
+/* Nested child, Text color for first children of body with class .red*/
+body {
+    color: #3D3D3D;
+
+    > .red {
+        color: #FF0000;
+    }
+}
