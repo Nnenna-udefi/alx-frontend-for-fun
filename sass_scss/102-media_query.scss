@@ -1,0 +1,24 @@
+/* Big media query */
+$small-screen: 320px;
+$small-font: 14px;
+$medium-screen: 640px;
+$medium-font: 16px;
+$bigger-screen: 960px;
+$big-font: 18px;
+$font: 20px;
+
+h1 {
+    font-size: $font;
+    @media screen and (max-width: $bigger-screen) {
+            font-size: $big-font;
+        @media screen and (max-width: $medium-screen) {
+              font-size: $medium-font; 
+        }
+        @media screen and (max-width: $small-screen) {
+            font-size: $small-font;
+            &.small {
+                color: #1D1D1D;
+            }
+        }
+    }
+}
