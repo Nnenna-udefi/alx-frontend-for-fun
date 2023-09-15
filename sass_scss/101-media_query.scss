@@ -1,0 +1,11 @@
+/* media query */
+
+$big-font: 20px;
+$small-font: 14px;
+$width: 320px;
+h1 {
+    font-size: $big-font;
+    @media screen and (max-width: $width) {
+        font-size: $small-font;
+    }
+}
