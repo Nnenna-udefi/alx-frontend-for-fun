@@ -1,0 +1,8 @@
+/* Nested hovers */
+button {
+    color: #f00000;
+
+    :hover {
+        color: #00FF00;
+    }
+}
